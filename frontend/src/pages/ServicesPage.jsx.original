@@ -1,0 +1,52 @@
+import React, { useState, useEffect } from 'react';
+import SectionHeader from '../components/common/SectionHeader';
+import Button from '../components/common/Button';
+import { ArrowUpRight } from 'lucide-react';
+
+export default function ServicesPage() {
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/v1/services')
+      .then((r) => r.json())
+      .then((d) => {
+        setServices(d.data || d);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('Failed to load');
+        setLoading(false);
+      });
+  }, []);
+
+  return (
+    <div>
+      <section style={{ padding: '4rem 0', borderBottom: '1px solid #e0e0e0' }}>
+        <div style={{ maxWidth: '820px', margin: '0 auto' }}>
+          <h2>Services</h2>
+          {loading ? (
+            <p>Loading services...</p>
+          ) : error ? (
+            <p>{error}</p>
+          ) : services.length === 0 ? (
+            <p>No services found.</p>
+          ) : (
+            <div style={{ display: 'grid', gap: '2rem', marginTop: '2rem' }}>
+              {services.map((s) => (
+                <div key={s.id} style={{ background: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', padding: '2rem' }}>
+                  <h3>{s.title}</h3>
+                  <p>{s.description}</p>
+                </div>
+              ))}
+            </div>
+          )}
+          <div style={{ marginTop: '2rem' }}>
+            <Button to="/contact">Get a Quote</Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

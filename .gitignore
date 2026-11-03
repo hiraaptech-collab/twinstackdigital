@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+backend/vendor/
+frontend/node_modules/
+
+# Environment files
+.env
+.env.backup
+.env.production
+backend/.env
+backend/.env.backup
+backend/.env.production
+frontend/.env.local
+frontend/.env.*.local
+
+# Laravel specific
+backend/bootstrap/cache/*
+!backend/bootstrap/cache/.gitignore
+backend/storage/*.key
+backend/storage/app/*
+!backend/storage/app/.gitignore
+backend/storage/framework/cache/*
+!backend/storage/framework/cache/.gitignore
+backend/storage/framework/sessions/*
+!backend/storage/framework/sessions/.gitignore
+backend/storage/framework/testing/*
+!backend/storage/framework/testing/.gitignore
+backend/storage/framework/views/*
+!backend/storage/framework/views/.gitignore
+backend/storage/logs/*
+!backend/storage/logs/.gitignore
+
+# Frontend build & caches
+frontend/dist/
+frontend/dist-ssr/
+frontend/.cache/
+*.tsbuildinfo
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Temporary & logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+frontend/.env
+frontend/.env.production
+*.sql
+*.sqlite
+*.sqlite3

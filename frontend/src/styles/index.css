@@ -1,0 +1,506 @@
+@import './variables.css';
+
+/* ==========================================================================
+   Global Reset & Base Elements
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-soft-gray);
+  color: var(--color-text-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Subtle luxury background radial sheen */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 550px;
+  background: var(--gradient-hero);
+  pointer-events: none;
+  z-index: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  transition: all var(--transition-normal);
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Focus Visible Accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* ==========================================================================
+   Layout Containers & Spacing
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.section-padding-sm {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .container, .container-narrow {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* ==========================================================================
+   Glassmorphism & Surface Utilities
+   ========================================================================== */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(221, 229, 242, 0.85);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.glass-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-lg);
+}
+
+.glass-hero {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(234, 243, 255, 0.80) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(221, 229, 242, 0.95);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-xl);
+}
+
+.glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  background: rgba(234, 243, 255, 0.9);
+  border: 1px solid rgba(8, 96, 248, 0.2);
+  color: var(--color-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+  transition: all var(--transition-normal);
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  box-shadow: 0 4px 14px rgba(8, 96, 248, 0.25);
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0752d4 0%, #051438 100%);
+  box-shadow: 0 6px 20px rgba(8, 96, 248, 0.35);
+  transform: translateY(-2px);
+  color: var(--color-white);
+}
+
+.btn-secondary {
+  background: var(--color-white);
+  color: var(--color-navy);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background: var(--color-ice-blue-light);
+  border-color: var(--color-border-hover);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+
+.btn-outline:hover {
+  background: var(--color-ice-blue);
+  color: var(--color-navy);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-md {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+.btn-lg {
+  padding: 0.95rem 2rem;
+  font-size: 1.05rem;
+  border-radius: var(--radius-lg);
+}
+
+/* ==========================================================================
+   Browser Mockup Window UI (For Project Previews)
+   ========================================================================== */
+
+.mockup-window {
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.mockup-header {
+  height: 38px;
+  background: var(--color-soft-gray);
+  border-bottom: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 0.75rem;
+}
+
+.mockup-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.mockup-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #CBD5E1;
+}
+
+.mockup-address {
+  flex: 1;
+  max-width: 240px;
+  height: 20px;
+  background: var(--color-white);
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-border-subtle);
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mockup-body {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, #F8FAFD 0%, #EAF3FF 100%);
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Accessibility & Animations
+   ========================================================================== */
+
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ==========================================================================
+   Phase 3 Interactive Motion & Perspective Styles
+   ========================================================================== */
+
+.perspective-container {
+  perspective: 1200px;
+}
+
+.card-interactive {
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  will-change: transform;
+}
+
+.card-interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-border-hover);
+}
+
+.card-tilt-hover {
+  transition: transform 300ms cubic-bezier(0.2, 0, 0.2, 1), box-shadow 300ms ease;
+  will-change: transform;
+}
+
+.card-tilt-hover:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 16px 36px -8px rgba(8, 96, 248, 0.16);
+}
+
+.input-interactive {
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.input-interactive:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(8, 96, 248, 0.14) !important;
+  background-color: var(--color-white) !important;
+  outline: none;
+}
+
+/* Process step connector track */
+.process-track {
+  position: relative;
+}
+
+.process-track::before {
+  content: '';
+  position: absolute;
+  top: 42px;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, #0860F8 0%, rgba(8, 96, 248, 0.2) 100%);
+  z-index: 0;
+}
+
+@media (max-width: 900px) {
+  .process-track::before {
+    display: none;
+  }
+}
+
+/* Route content fade-in */
+.page-fade-enter {
+  animation: pageFadeIn 350ms cubic-bezier(0.2, 0, 0.2, 1) forwards;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card-interactive:hover,
+  .card-tilt-hover:hover {
+    transform: none !important;
+  }
+  .page-fade-enter {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Cinematic 3D & Editorial Typography Extensions
+   ========================================================================== */
+
+.hero-editorial-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5.5vw, 4.6rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  text-shadow: 0 4px 24px rgba(7, 27, 73, 0.45);
+}
+
+.hero-editorial-subtitle {
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  color: rgba(234, 243, 255, 0.9);
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* 3D Button Effects */
+.btn {
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(8, 96, 248, 0.38), 0 0 16px rgba(8, 96, 248, 0.25);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(7, 27, 73, 0.12);
+}
+
+/* 3D Card Hover & Depth Tilt */
+.card-3d {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card-3d:hover {
+  transform: translateY(-6px) rotateX(2deg) scale(1.01);
+  box-shadow: 0 20px 40px -12px rgba(8, 96, 248, 0.18), 0 0 0 1px rgba(8, 96, 248, 0.2);
+}
+
+/* Flowing S-Curve motion background */
+.flowing-curve-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes waveFlow {
+  0% { transform: translateX(0) translateZ(0); }
+  50% { transform: translateX(-25%) translateY(-10px) translateZ(0); }
+  100% { transform: translateX(0) translateZ(0); }
+}
+
+.flowing-wave {
+  animation: waveFlow 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flowing-wave {
+    animation: none !important;
+  }
+  .card-3d:hover {
+    transform: none !important;
+  }
+}
+
+/* Responsive Navigation */
+@media (max-width: 868px) {
+  .desktop-nav, .desktop-nav-cta {
+    display: none !important;
+  }
+  .mobile-nav-toggle {
+    display: flex !important;
+  }
+}
+
+

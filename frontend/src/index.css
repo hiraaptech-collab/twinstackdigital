@@ -1,0 +1,11 @@
+@import './styles/index.css';
+
+/* Full viewport layout & smooth root resets */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}

@@ -1,0 +1,38 @@
+import React, { useState, useEffect } from 'react';
+import Button from '../components/common/Button';
+import SectionHeader from '../components/common/SectionHeader';
+
+export default function HomePage() {
+  const [homeContent, setHomeContent] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/v1/home-content')
+      .then((r) => r.json())
+      .then((d) => {
+        setHomeContent(d.data || d);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  return (
+    <div>
+      <section style={{ padding: '4rem 0', borderBottom: '1px solid #e0e0e0' }}>
+        <div style={{ maxWidth: '820px', margin: '0 auto' }}>
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <div>
+              <h1>Welcome to Twin Stack Digital</h1>
+              <p>Karachi-based digital agency</p>
+              <Button to="/contact">Get a Free Quote</Button>
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
+  );
+}

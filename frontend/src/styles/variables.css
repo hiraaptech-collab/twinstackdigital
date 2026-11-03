@@ -1,0 +1,80 @@
+/* ==========================================================================
+   Design Tokens - Twin Stack Digital
+   Brand Palette: White #FFFFFF, Electric Blue #0860F8, Deep Navy #071B49,
+   Ice Blue #EAF3FF, Soft Gray #F4F7FB
+   ========================================================================== */
+
+:root {
+  /* Brand Core Colors */
+  --color-white: #FFFFFF;
+  --color-primary: #0860F8;          /* Electric Blue */
+  --color-primary-hover: #064ecc;    /* Electric Blue Darker */
+  --color-primary-active: #053ea3;
+  --color-navy: #071B49;             /* Deep Navy */
+  --color-navy-light: #0D2764;
+  --color-ice-blue: #EAF3FF;         /* Ice Blue */
+  --color-ice-blue-light: #F4F8FF;
+  --color-soft-gray: #F4F7FB;        /* Soft Gray Background */
+  --color-gray-100: #EEF2F8;
+  --color-gray-200: #E2E8F0;
+
+  /* Typography Colors */
+  --color-text-dark: #071B49;        /* High-contrast Deep Navy for Headings */
+  --color-text-body: #1E293B;        /* High readability Dark Slate */
+  --color-text-muted: #4B5E82;       /* Mid Navy Slate for secondary text */
+  --color-text-light: #7E90B0;       /* Light Slate for metadata/captions */
+
+  /* Structural Borders */
+  --color-border: #DDE5F2;
+  --color-border-subtle: #E8EEF8;
+  --color-border-hover: #BCD2FA;
+
+  /* Status Tokens */
+  --color-success: #059669;
+  --color-success-bg: #ECFDF5;
+  --color-success-border: #A7F3D0;
+  --color-warning: #D97706;
+  --color-warning-bg: #FFFBEB;
+  --color-warning-border: #FDE68A;
+  --color-danger: #DC2626;
+  --color-danger-bg: #FEF2F2;
+  --color-danger-border: #FECACA;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #0860F8 0%, #071B49 100%);
+  --gradient-blue-sheen: linear-gradient(135deg, #0860F8 0%, #3080FF 100%);
+  --gradient-ice-sheen: linear-gradient(135deg, #FFFFFF 0%, #EAF3FF 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(234, 243, 255, 0.75) 100%);
+  --gradient-hero: radial-gradient(circle at 80% 20%, rgba(8, 96, 248, 0.08) 0%, rgba(234, 243, 255, 0.4) 35%, rgba(244, 247, 251, 1) 75%);
+
+  /* Shadows & Elevations */
+  --shadow-sm: 0 1px 3px rgba(7, 27, 73, 0.05);
+  --shadow-md: 0 4px 16px -2px rgba(7, 27, 73, 0.07);
+  --shadow-lg: 0 12px 32px -4px rgba(7, 27, 73, 0.10);
+  --shadow-xl: 0 20px 48px -8px rgba(7, 27, 73, 0.14);
+  --shadow-glow: 0 0 24px rgba(8, 96, 248, 0.20);
+  --shadow-glow-sm: 0 0 12px rgba(8, 96, 248, 0.15);
+
+  /* Border Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Layout Constraints */
+  --container-max: 1240px;
+  --container-narrow: 860px;
+  --nav-height: 76px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, Cambria, 'Times New Roman', serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}

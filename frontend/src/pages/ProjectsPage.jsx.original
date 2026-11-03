@@ -1,0 +1,55 @@
+import React, { useState, useEffect } from 'react';
+import SectionHeader from '../components/common/SectionHeader';
+import Button from '../components/common/Button';
+import { ArrowUpRight } from 'lucide-react';
+
+export default function ProjectsPage() {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [category, setCategory] = useState('All');
+
+  useEffect(() => {
+    fetch('/api/v1/projects')
+      .then((r) => r.json())
+      .then((d) => {
+        setProjects(d.data || d);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('Failed to load');
+        setLoading(false);
+      });
+  }, []);
+
+  const filtered = category === 'All' ? projects : projects.filter(p => p.category === category);
+
+  return (
+    <div>
+      <section style={{ padding: '4rem 0', borderBottom: '1px solid #e0e0e0' }}>
+        <div style={{ maxWidth: '820px', margin: '0 auto' }}>
+          <h2>Projects</h2>
+          {loading ? (
+            <p>Loading projects...</p>
+          ) : error ? (
+            <p>{error}</p>
+          ) : filtered.length === 0 ? (
+            <p>No projects found.</p>
+          ) : (
+            <div style={{ display: 'grid', gap: '2rem', marginTop: '2rem' }}>
+              {filtered.map((p) => (
+                <div key={p.id} style={{ background: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', padding: '2rem' }}>
+                  <h3>{p.title}</h3>
+                  <p>{p.description}</p>
+                </div>
+              ))}
+            </div>
+          )}
+          <div style={{ marginTop: '2rem' }}>
+            <Button to="/contact">Request Proposal</Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

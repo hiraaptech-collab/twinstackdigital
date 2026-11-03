@@ -1,0 +1,18 @@
+{
+  "name": "twinstack-digital",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"cd frontend && npx vite\" \"cd backend && php artisan serve --port 8000\"",
+    "build": "cd frontend && vite build",
+    "lint": "oxlint"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "devDependencies": {
+    "vite": "^8.3.5",
+    "oxlint": "^1.89.0"
+  }
+}
